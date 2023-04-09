@@ -1,0 +1,32 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Trebuchet MS";
+  background-image: url("https://img.freepik.com/premium-photo/old-green-paper-textured-background_23-2147951282.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  /* gap: 1rem; */
+}
+
+h1 {
+  color: goldenrod;
+}
+
+#btn-startGame,
+#btn-newCard {
+  color: #016f32;
+  background-color: goldenrod;
+  width: 150px;
+  padding: 1rem;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  margin-top: 0.5rem;
+}
