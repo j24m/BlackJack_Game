@@ -5,17 +5,13 @@ let cardsEl = document.querySelector("#cards-el");
 let btnNewCard = document.querySelector("#btn-newCard");
 let cards = [];
 let sum = 0;
+let wins = 0;
+let losses = 0;
 let hasBlackJack = false;
 let isAlive = false;
 let message = "";
-let playerChips = document.querySelector("#chips-el");
-
-let player = {
-  name: "John Doe",
-  chips: 145,
-};
-
-playerChips.textContent = `${player.name} : $${player.chips}`;
+let playerWins = document.querySelector("#win-el");
+let playerLosses = document.querySelector("#loss-el");
 
 btnStartGame.addEventListener("click", startGame);
 
@@ -50,6 +46,8 @@ function renderGame() {
     message = "Draw a new card";
   } else if (sum === 21) {
     setTimeout(() => {
+      wins++;
+      playerWins.textContent = `Wins : ${wins}`;
       messageEl.textContent = "You've got Blackjack!";
       hasBlackJack = true;
       setTimeout(() => {
@@ -65,6 +63,8 @@ function renderGame() {
     });
   } else {
     message = "You're out of the game!";
+    losses++;
+    playerLosses.textContent = `Losses : ${losses}`;
     isAlive = false;
   }
   messageEl.textContent = message;
