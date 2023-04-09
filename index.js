@@ -20,7 +20,7 @@ playerChips.textContent = `${player.name} : $${player.chips}`;
 btnStartGame.addEventListener("click", startGame);
 
 function getRandomCard() {
-  let randomNumber = Math.floor(Math.random() * 13);
+  let randomNumber = Math.floor(Math.random() * 13) + 1;
   if (randomNumber > 10) {
     return 10;
   } else if (randomNumber === 1) {
@@ -35,6 +35,7 @@ function startGame() {
   let firstCard = getRandomCard();
   let secondCard = getRandomCard();
   cards = [firstCard, secondCard];
+  console.log(cards);
   sum = firstCard + secondCard;
   renderGame();
 }
@@ -46,10 +47,22 @@ function renderGame() {
     cardsEl.textContent += `${cards[i]} `;
   }
   if (sum <= 20) {
-    message = "Do you want to draw a new card?";
+    message = "Draw a new card";
   } else if (sum === 21) {
-    message = "You've got Blackjack!";
-    hasBlackJack = true;
+    setTimeout(() => {
+      messageEl.textContent = "You've got Blackjack!";
+      hasBlackJack = true;
+      setTimeout(() => {
+        messageEl.textContent = "Play Again!";
+        sum = 0;
+        sumEl.textContent = `Sum : `;
+        cards = [];
+        console.log(cards);
+        cardsEl.textContent = `Cards : ${cards} `;
+        isAlive = false;
+        hasBlackJack = false;
+      }, 3000);
+    });
   } else {
     message = "You're out of the game!";
     isAlive = false;
